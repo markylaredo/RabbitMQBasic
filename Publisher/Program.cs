@@ -2,8 +2,8 @@
 using RabbitMQ.Client;
 
 var factory = new ConnectionFactory { HostName = "localhost" };
-using var connection = await factory.CreateConnectionAsync();
-using var channel = await connection.CreateChannelAsync();
+await using var connection = await factory.CreateConnectionAsync();
+await using var channel = await connection.CreateChannelAsync();
 
 const string queueName = "task_queue";
 const string dlxExchange = "dlx_exchange";
